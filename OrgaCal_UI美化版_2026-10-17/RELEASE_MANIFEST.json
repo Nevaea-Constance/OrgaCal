@@ -1,0 +1,272 @@
+{
+  "version": "0.3.0-ui",
+  "created_at_utc": "2026-10-17T10:17:00.366011+00:00",
+  "publication_status": "local UI updated; GitHub and ModelScope not published",
+  "validation": {
+    "unit_tests": "24 passed",
+    "service_smoke": "passed",
+    "browser": "375px mobile; 768px tablet/landscape; 1440px desktop; light and dark"
+  },
+  "files": [
+    {
+      "path": ".dockerignore",
+      "bytes": 81,
+      "sha256": "161481eba3c1c54d85e64d2e7492c1a52d1d5e0231f0fa858371f05f4d046d6c"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 123,
+      "sha256": "3dc71b0f95fd60b0ae328ebd543789d48ae6ade20911407990c692b649761c90"
+    },
+    {
+      "path": "app.py",
+      "bytes": 27698,
+      "sha256": "104bc112640470e3278d3567d9ab1668d0c91b4b6720bd0c846c1bbd93615f8d"
+    },
+    {
+      "path": "assets/workbench.css",
+      "bytes": 17236,
+      "sha256": "a5357174dbd7659d905332228f90d3394207eabab235f9f14e8cd2edabc3feab"
+    },
+    {
+      "path": "batch.py",
+      "bytes": 7191,
+      "sha256": "0441dfd25eb347179c35811ef0e3bb90a1b5758e8de12d9d5a91b45f8d6dc680"
+    },
+    {
+      "path": "calibration.py",
+      "bytes": 2390,
+      "sha256": "bed414e1be9013f8f61b592d7860a5ec99d888b0ff3da0ef130af196252a37f3"
+    },
+    {
+      "path": "consistency.py",
+      "bytes": 6132,
+      "sha256": "9b8309c4e8b6640debeae90f01c06b0004e4612485d1672030054e083c51246d"
+    },
+    {
+      "path": "constraints.py",
+      "bytes": 7315,
+      "sha256": "ae461758f9b3e17ca5caa09281274445f679ab56817857c0c75f3f7c62bf373c"
+    },
+    {
+      "path": "data/reference/literature_cache.json",
+      "bytes": 37814,
+      "sha256": "7047c6cf14b3d67cd21ce6665c96a51687acfae33b5b983e2b0a840d5becc10c"
+    },
+    {
+      "path": "data/reference/mad_validation.json",
+      "bytes": 100953,
+      "sha256": "dd060fbf077c1d32f233122ca37302a3de8b6a6277c681f4a257d8dec7cdf1f3"
+    },
+    {
+      "path": "data/reference/paper_data_index.json",
+      "bytes": 1085236,
+      "sha256": "36f93cb2dd6dc9f4dffe58b074a243e8ae3b666e0e00cc60fd7ca3e8649440a2"
+    },
+    {
+      "path": "data/reference/paper_license.json",
+      "bytes": 1473,
+      "sha256": "181d7ce8319f5204b1d909db12ff9d87d887b4175e26327b17f2af675639cec2"
+    },
+    {
+      "path": "data/reference/segmentation_validation.json",
+      "bytes": 38460,
+      "sha256": "5c473999a427e53609a859d9f9661d8d258d0306970751f4feec49a2063dc83d"
+    },
+    {
+      "path": "design-system/MASTER.md",
+      "bytes": 2324,
+      "sha256": "6317fd1b21eca4235653a9b52f39767cb2e1f965fbd7562ba625ccfbf1cea370"
+    },
+    {
+      "path": "Dockerfile",
+      "bytes": 415,
+      "sha256": "df9dd2ea891195f872b54bfe3aae4185b31bd9b12f3f28c26af5434b0e06dcd8"
+    },
+    {
+      "path": "docs/双边界模型与换算.md",
+      "bytes": 3311,
+      "sha256": "fb53dc78b599cdd6c18c5d187faba77dd92dd9ed96d074e1c5a0f6e42dbd7191"
+    },
+    {
+      "path": "docs/多目标识别验证记录.md",
+      "bytes": 2541,
+      "sha256": "3011d10555d925e821c4405e77d98f104004b980148326a04651148953220906"
+    },
+    {
+      "path": "docs/开发路线与验收.md",
+      "bytes": 7574,
+      "sha256": "c760691722e8b61060d7b84cf4da38ed309dc4ac6fcb265187d147053e3222a5"
+    },
+    {
+      "path": "docs/指标定义与验收清单.md",
+      "bytes": 8443,
+      "sha256": "8ae46c78579f7e1cd2ee1f65a1932c01f1b35e14cf9f72d490375828ce6a68b2"
+    },
+    {
+      "path": "docs/整体验证记录.md",
+      "bytes": 3393,
+      "sha256": "6d54e110a5306bdc1a9c8d08c3da8b173e5eb8f76e460a9f1fb5484560b2ddd1"
+    },
+    {
+      "path": "docs/模型假设.md",
+      "bytes": 4843,
+      "sha256": "9c91e7eaeee9a163de5f04b500b929d85a51e4ba4ef1b33da590001c2f91895f"
+    },
+    {
+      "path": "docs/比例尺标定说明.md",
+      "bytes": 3006,
+      "sha256": "c032afac629fadc45d16504104d53ae8b95e1f090b6e881056625a2b5e649d77"
+    },
+    {
+      "path": "docs/界面升级说明.md",
+      "bytes": 3476,
+      "sha256": "a037a91fe37ce561ebe80677a86e50c3dc95d012ec7277401a34296eecf14f24"
+    },
+    {
+      "path": "docs/补充数据集筛选.md",
+      "bytes": 6691,
+      "sha256": "a6ee323b2e5cad2545c535470640bf9e459e1eec7db014a0d6e24556bb326620"
+    },
+    {
+      "path": "docs/论文数据对应表.md",
+      "bytes": 3542,
+      "sha256": "de61ad6751778875b370cb6c829b4e43c86291c797811da65b480c8ad96c5b73"
+    },
+    {
+      "path": "docs/部署与提交.md",
+      "bytes": 2601,
+      "sha256": "2ce909132ef466291cabc582a0c13435dd2441426579728fdd824eaaac4e7cf7"
+    },
+    {
+      "path": "examples/batch_metadata.csv",
+      "bytes": 302,
+      "sha256": "07084c969a59e2157c60bde76e31f6f5d24ecf61c4141e075d0399a5550f7a99"
+    },
+    {
+      "path": "examples/os_day90.jpg",
+      "bytes": 693370,
+      "sha256": "9bbc0f0b198ac1237475060d0438950ab2c9309039b5af79f3cbd9153cfc0e3b"
+    },
+    {
+      "path": "examples/pa_day6.jpg",
+      "bytes": 968970,
+      "sha256": "e34600d81d186b10ee1c667e03561204a752731ca7368ecdb2ae788c218ade55"
+    },
+    {
+      "path": "examples/rc_day6.jpg",
+      "bytes": 1440328,
+      "sha256": "1664eb080429c1a890cd8b3adf59fee5d70b2d8659a7ed6d793e78d63655a508"
+    },
+    {
+      "path": "examples/rc_day90.jpg",
+      "bytes": 514911,
+      "sha256": "8fcfcbaf6282fb332d7b846cb5c572f985499df7b1bca02073bccf832651b424"
+    },
+    {
+      "path": "examples/README.md",
+      "bytes": 1274,
+      "sha256": "f22d16fac79242b742b73cc80f174a29cdae5e0abe6d3446b2941fd25f250c13"
+    },
+    {
+      "path": "examples/source_manifest.json",
+      "bytes": 1686,
+      "sha256": "a97068bea31c770f84466c6a3b301d2319af55205f88eb0d09de6e441629538f"
+    },
+    {
+      "path": "literature.py",
+      "bytes": 5871,
+      "sha256": "abf1447babf15cdc7b822ecdad43200a93071ed9277ab1a379a375dc216e135f"
+    },
+    {
+      "path": "morphology.py",
+      "bytes": 8728,
+      "sha256": "d8843ebb4d8f258899a65009f791214161b5d452410d9157f0372f554ee7ee59"
+    },
+    {
+      "path": "physics.py",
+      "bytes": 6288,
+      "sha256": "f583d518c394acae8677b2fd471e022c982b062be93e05f700e018332f569488"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5911,
+      "sha256": "7fbdaf5ff0985ffc6c1cd7c2563b43b38cbc0ae54ecd91fb8ca095ff00f31409"
+    },
+    {
+      "path": "reports.py",
+      "bytes": 14447,
+      "sha256": "c20c738adf8b840b7b4aaecd770d0c4a297b2e4140877570fc8a45b209eb24b5"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "bytes": 37,
+      "sha256": "3cc9f477da755b65f58bab64674337bb0e8ecd2bafc270722d24b67f2604253a"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 151,
+      "sha256": "e73c21a2a5b2bb69149723065bfcba39598672452ec589fd90ddf3bb6bd5b26d"
+    },
+    {
+      "path": "scripts/build_reference_index.py",
+      "bytes": 15910,
+      "sha256": "aea4596a67b97bce2b237393e83767c48e428fbd26ed635d40b0f9a85fcdd8c6"
+    },
+    {
+      "path": "scripts/cache_literature.py",
+      "bytes": 814,
+      "sha256": "02e4f45caf51f2197609115cb26c856c32e731d57349e71f0a905d6081ca414d"
+    },
+    {
+      "path": "scripts/validate_paper_mad.py",
+      "bytes": 3859,
+      "sha256": "433fe22b4565472861c75030ead18798af9174c497ba8fbc74db1ca5a7e62f6e"
+    },
+    {
+      "path": "scripts/validate_slimia.py",
+      "bytes": 4316,
+      "sha256": "e6838e98ad0a03d5adbdb92ddd20c6ed415d46e27b2d1ef4fe279e7148b7c809"
+    },
+    {
+      "path": "single_ui.py",
+      "bytes": 11159,
+      "sha256": "9e213ce6c744c7b7a8cba66676a527a8b0156778e6ae45adb48c2b4cc4e86057"
+    },
+    {
+      "path": "tests/test_calibration.py",
+      "bytes": 3404,
+      "sha256": "92d8604b34ca94d9dfc2804f7bce0e1622f38be208cc4806cf02a3d7dd0c79fa"
+    },
+    {
+      "path": "tests/test_physics.py",
+      "bytes": 3986,
+      "sha256": "ea23221fc99a0846fc8586b0849fbf8ea08b25b9d7ae73709bc4d13a1bc40f3d"
+    },
+    {
+      "path": "tests/test_workbench.py",
+      "bytes": 6324,
+      "sha256": "37cf75e1cde086a2d040930d303bea0b5801d4d8f0bf70c31fc6211804d5654b"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1724,
+      "sha256": "a073c07e9e25088b45183e61437e4d4cc83ffb3157e51d7b48eb4e2dd3bf9d3d"
+    },
+    {
+      "path": "ui_logic.py",
+      "bytes": 10217,
+      "sha256": "c176e5a680d3f3dc208c89d900806c2b58849b376ee7791fcc629aaa04214751"
+    },
+    {
+      "path": "visual_design.py",
+      "bytes": 7495,
+      "sha256": "9387b978f5e95adbd6817be06c5951eb18c9d230883a2ec9699bf638a473d08d"
+    },
+    {
+      "path": "启动OrgaCal.bat",
+      "bytes": 214,
+      "sha256": "942117ab6a34837fe36f6e3d08eadf4a61e32326ba4b8ff9955c0b3a880626f4"
+    }
+  ]
+}
