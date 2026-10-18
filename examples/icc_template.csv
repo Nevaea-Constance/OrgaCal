@@ -1,0 +1,9 @@
+target_id,rater_id,value
+demo_target_01,rater_A,100
+demo_target_01,rater_B,102
+demo_target_02,rater_A,120
+demo_target_02,rater_B,119
+demo_target_03,rater_A,140
+demo_target_03,rater_B,142
+demo_target_04,rater_A,160
+demo_target_04,rater_B,158
