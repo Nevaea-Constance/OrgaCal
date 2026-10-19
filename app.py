@@ -46,17 +46,17 @@ with gr.Blocks(title='OrgaCal · 境算师') as demo:
         with gr.Column(scale=1,min_width=0,elem_id='oc-sidebar'):
             gr.HTML('<div class="oc-nav-caption">微环境分析工作区</div>',elem_classes='oc-nav-context')
             nav_buttons=[gr.Button(label,variant='primary' if key=='shear' else 'secondary',elem_id=f'nav-{key}',elem_classes='oc-nav-button') for key,label in NAV]
-            gr.HTML('<div class="oc-sidebar-note"><strong>当前支持轨道摇床</strong>物理模型待校准<br>候选轮廓需人工核对<br>图像在运行端处理</div>',elem_classes='oc-nav-context')
+            gr.HTML('<div class="oc-sidebar-note"><strong>当前支持轨道摇床</strong>剪切为物理情景估算<br>候选轮廓需人工核对<br>图像在运行端处理</div>',elem_classes='oc-nav-context')
         with gr.Column(scale=7,min_width=0,elem_id='oc-workspace'):
             with gr.Tabs(selected='shear',elem_id='workspace-tabs') as workspace_tabs:
                 with gr.Tab('剪切预算',id='shear'):
-                    gr.HTML(page_heading('把设备参数，变成可核对的剪切预算','输入实际摇床与培养条件，查看剪切量级及其计算依据。初始参数仅供演示。'))
+                    gr.HTML(page_heading('把设备参数，变成可核对的剪切预算','输入摇摆直径、转速、容器与液量，查看剪切量级及其计算依据。初始参数仅供演示。'))
                     with gr.Row(elem_classes='oc-two-column'):
                         with gr.Column(scale=11,min_width=280,elem_classes='oc-panel'):
                             gr.HTML(panel_heading('设备与培养条件','晃幅填写轨道直径；容器尺寸和液量均以单孔 / 单皿计。'))
                             geometry=gr.Dropdown([SUPPORTED_GEOMETRY,'其他几何（暂不支持）'],value=SUPPORTED_GEOMETRY,label='容器形状')
                             with gr.Row():
-                                orbit=gr.Dropdown(['10','19','25','50'],value='25',allow_custom_value=True,label='轨道直径（mm）',info='来自设备手册或实测，不是半径。',min_width=140)
+                                orbit=gr.Dropdown(['10','19','25','50'],value='25',allow_custom_value=True,label='轨道直径（mm）',info='即摇摆直径，来自设备手册或实测，不是半径。',min_width=140)
                                 rpm=gr.Number(value=80,label='转速（rpm）',min_width=120)
                             with gr.Row():
                                 vessel=gr.Number(value=35,label='容器内径（mm）',min_width=130)
@@ -80,7 +80,8 @@ with gr.Blocks(title='OrgaCal · 境算师') as demo:
                     with gr.Accordion('查看本次参数、公式与文献依据',open=False,elem_classes='oc-technical'):
                         shear_table=gr.Dataframe(label='参数与中间量',headers=['参数','数值','单位'],interactive=False,elem_classes='oc-table')
                         shear_assumptions=gr.Markdown('完成计算后，这里会保留全部中间量、公式和适用条件。')
-                    gr.HTML(notice('当前采用未校准的轨道摇床液深尺度模型。旋转腔、机械振动、装配偏心等分项预算尚未接入。','warning'))
+                    gr.HTML(notice('本页数值是液深尺度估算（τ≈μU/h），尚无本装置的实测流场对照。文献 CFD 显示轨道摇床孔内的壁面剪切随位置和时间变化，所以结果既不是峰值，也不是平均值。旋转腔、机械振动、装配偏心等分项预算尚未接入。','warning'))
+                    gr.Markdown('**文献背景**　[Driessen 等（2020）](https://pmc.ncbi.nlm.nih.gov/articles/PMC7345652/)：牛顿流体剪切应力与速度梯度的关系。[脑类器官轨道摇床 CFD（2019）](https://pmc.ncbi.nlm.nih.gov/articles/PMC6404276/)：六孔板内的流场与剪切。[轨道摇床孔板壁面剪切 CFD（Annals of Biomedical Engineering）](https://link.springer.com/article/10.1007/s10439-011-0444-9)：流动随空间和时间变化。这些文献给出剪切的定义和分布特征，没有验证本页的 U/h 尺度。',elem_classes='oc-help')
                     shear_outputs=[shear_value,shear_note,shear_table,shear_assumptions,physics_state]
                     shear_event=shear_button.click(calculate_shear,common,shear_outputs)
                     for component in common:
@@ -254,7 +255,7 @@ with gr.Blocks(title='OrgaCal · 境算师') as demo:
                             gr.HTML(panel_heading('条件交集与敏感性','剪切上界 × 悬浮下界 × 氧供给下界'))
                             safe_text=gr.Markdown('补充左侧必要参数，再计算条件区间。假设算例用于演示流程，不能作为实验安全建议。')
                             safe_plot=gr.Plot(label='各约束交集与敏感性图',show_label=False)
-                            gr.HTML(notice('当前提供物理约束与敏感性分析，尚未训练目标形态代理模型，不输出未经验证的最优培养条件。','warning'))
+                            gr.HTML(notice('本页只判断条件是否满足所填的物理约束。目前没有条件与形态的配对数据，所以不预测形态，也不对条件排序。','warning'))
                     with gr.Accordion('逐项约束、敏感性数据与模型边界',open=False,elem_classes='oc-technical'):
                         safe_table=gr.Dataframe(label='每项约束与依据',interactive=False,elem_classes='oc-table')
                         safe_sensitivity=gr.Dataframe(label='Δρ × Q 敏感性（0.5、1、2 倍）',interactive=False,elem_classes='oc-table')
@@ -320,7 +321,7 @@ with gr.Blocks(title='OrgaCal · 境算师') as demo:
         button.click(partial(navigate,key),None,navigation_outputs,queue=False,api_name=False)
     screen_shortcut.click(partial(navigate,'screening'),None,navigation_outputs,queue=False,api_name=False)
     report_shortcut.click(partial(navigate,'report'),None,navigation_outputs,queue=False,api_name=False)
-    gr.HTML('<footer class="oc-footer"><span>OrgaCal 境算师：参数计算与形态一致性</span><span>公开数据演示，模型待校准，结果可追溯</span></footer>')
+    gr.HTML('<footer class="oc-footer"><span>OrgaCal 境算师：参数计算与形态一致性</span><span>公开数据演示，物理结果为情景估算，来源可追溯</span></footer>')
     demo.load(lambda:(None,None,None,None,None),None,[shear_limit,q,beta_suspend,beta_transfer,shared_scale],queue=False)
     demo.queue(default_concurrency_limit=1,max_size=20)
 

@@ -51,7 +51,10 @@ compact to leave useful results visible in screenshots. White space separates
 tasks; boundaries indicate actual form/result groups. Warm emphasis is limited
 to notices, brand markers and meaningful distinctions, not decorative cards.
 
-The logo is the unchanged supplied assets/logo.png, embedded as a data URI so
+The logo is the supplied full "OrgaCal 境算师" wordmark (2026-10-18 version, with
+the final "al"), saved as assets/logo.png at 477x169. It is a transparent
+PNG; only the empty margin was cropped and the artwork is untouched. The previous partial logo is kept in outputs/logo_previous.png.
+It is embedded as a data URI so
 cloud hosting does not depend on a separate static-file route. It retains its
 aspect ratio and the text alternative "OrgaCal 境算师". It must be included when
 rebuilding the public resource bundle.

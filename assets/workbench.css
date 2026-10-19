@@ -42,7 +42,7 @@ body { background: var(--body-background-fill); }
 .gradio-container .block { box-shadow: none !important; }
 .gradio-container .oc-topbar { background: #fff; color: var(--oc-brand-ink); border: 1px solid var(--oc-line); border-bottom: 3px solid var(--oc-brand-primary); border-radius: 12px 12px 0 0; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .oc-brand { display: flex; align-items: center; gap: 24px; min-width: 0; }
-.gradio-container .oc-brand-logo { display: block; width: 154px; height: auto; object-fit: contain; flex-shrink: 0; }
+.gradio-container .oc-brand-logo { display: block; width: 184px; height: auto; object-fit: contain; flex-shrink: 0; }
 .oc-brand-copy { border-left: 1px solid #c4d8cd; padding-left: 24px; min-width: 0; }
 .gradio-container .oc-brand h1 { font-size: 20px; line-height: 1.4; color: var(--oc-brand-ink); font-weight: 650; margin: 0; letter-spacing: -.3px; }
 .gradio-container .oc-brand p { font-size: 12px; color: #516b61; margin: 5px 0 0; }
@@ -169,7 +169,7 @@ body { background: var(--body-background-fill); }
   .gradio-container { padding: 8px !important; font-size: 15px; }
   .gradio-container .oc-topbar { padding: 13px 12px; border-radius: 10px 10px 0 0; }
   .oc-brand { gap: 12px; }
-  .gradio-container .oc-brand-logo { width: 116px; }
+  .gradio-container .oc-brand-logo { width: 140px; }
   .oc-brand-copy { padding-left: 12px; }
   .gradio-container .oc-brand h1 { font-size: 16px; letter-spacing: 0; }
   .gradio-container .oc-brand p { font-size: 11px; }

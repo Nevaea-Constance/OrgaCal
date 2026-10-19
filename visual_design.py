@@ -59,8 +59,8 @@ def icon(name, size=24):
 
 _LOGO_DATA = base64.b64encode((ROOT / 'assets' / 'logo.png').read_bytes()).decode('ascii')
 HEADER = f'''<header class="oc-topbar">
-  <div class="oc-brand"><img class="oc-brand-logo" src="data:image/png;base64,{_LOGO_DATA}" alt="OrgaCal 境算师" width="391" height="169">
-    <div class="oc-brand-copy"><h1>类器官微环境工作台</h1><p>培养参数计算与形态一致性分析</p></div></div>
+  <div class="oc-brand"><img class="oc-brand-logo" src="data:image/png;base64,{_LOGO_DATA}" alt="OrgaCal 境算师" width="477" height="169">
+    <div class="oc-brand-copy"><h1>类器官微环境计算与形态评价软件</h1><p>面向轨道摇床培养：剪切估算、条件筛选、形态量化与文献证据整理</p></div></div>
   <div class="oc-header-meta"><span class="oc-header-tag">科研工作台</span><span class="oc-header-motto">算剪切，查条件交集，量形状</span></div>
 </header>'''
 
