@@ -1,0 +1,11 @@
+.venv
+.git
+__pycache__
+*.pyc
+.env
+.env.*
+auth.json
+config.toml
+tmp
+outputs
+*.zip
