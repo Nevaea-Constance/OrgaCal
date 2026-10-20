@@ -34,7 +34,6 @@ def validation_panel():
     cells = metric('外部分割验证', f"{s['n_images']} 张", 'SLiMIA OperaPhenix 细胞球')
     cells += metric('平均前景 Dice', f"{s['mean_dice']:.4f}", f"平均 IoU {s['mean_iou']:.4f}；非实例准确率")
     cells += metric('作者相对 MAD 复算', f"{m['match_counts']['relative_mad_ratio']} / {m['rows_checked']}", f"最大绝对误差 {data['mad_max_error']:.2e}")
-    cells += metric('条件—形态训练样本', '0 组', '未训练代理模型；预测误差未评估')
     return f'<section class="oc-validation"><h3>公开验证记录</h3><div class="oc-evidence-grid">{cells}</div><p>分割指标来自已保存的外部细胞球验证；MAD 核验统计口径。两者均不等于摇床流场标定或生物学效果验证。</p></section>'
 
 
@@ -46,7 +45,7 @@ def run_info(state, kind):
         details = [f"轨道 {state['orbit_diameter_mm']:g} mm", f"{state['rpm']:g} rpm", f"内径 {state['vessel_diameter_mm']:g} mm", f"液量 {state['volume_ml']:g} mL", '解析计算 / 无训练样本']
     elif kind == 'interval':
         p = state.get('inputs', {})
-        details = [f"阈值 {p.get('shear_limit_mpa', '未提供')} mPa", f"直径 {p.get('diameter_um', '未提供')} µm", f"Q {p.get('oxygen_q', '未提供')} mol/m³/s", f"{len(state.get('sensitivity', []))} 组敏感性情景", '装置标定误差：未评估']
+        details = [f"阈值 {p.get('shear_limit_mpa', '未提供')} mPa", f"直径 {p.get('diameter_um', '未提供')} µm", f"Q {p.get('oxygen_q', '未提供')} mol/m³/s", f"{len(state.get('sensitivity', []))} 组敏感性情景"]
     elif kind == 'batch':
         details = [f"{state.get('image_count', 0)} 张图像", f"{len(state.get('records', []))} 条目标记录", f"{len(state.get('failures', []))} 张失败或未检出", '作者 EV1 参数表' if state.get('origin') == 'paper_ev1' else '本程序轮廓测量 / 待复核']
     elif kind == 'statistics':

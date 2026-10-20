@@ -160,9 +160,9 @@ class MetadataAndPresentationTests(unittest.TestCase):
         self.assertIn('6 / 52', shown)
         self.assertEqual(shown.count('已运行'), 1)
 
-    def test_validation_panel_states_zero_training_samples(self):
+    def test_validation_panel_states_evidence_boundary(self):
         panel = validation_panel()
-        self.assertIn('0 组', panel)
+        self.assertNotIn('条件—形态训练样本', panel)
         self.assertIn('不等于摇床流场标定', panel)
 
     def test_statistics_table_handles_empty(self):

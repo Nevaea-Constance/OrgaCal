@@ -70,6 +70,11 @@ def build_single(demo):
                 input_image = gr.Image(label='上传明场图片', type='pil', image_mode='RGBA', sources=['upload'], height=400)
             with gr.Column(min_width=280):
                 output_image = gr.Image(label='候选轮廓与编号：绿色待核对，灰色已排除', type='pil', interactive=False, height=400)
+        example_paths = [ROOT / 'examples' / name for name in ['pa_day6.jpg', 'rc_day6.jpg', 'os_day90.jpg', 'rc_day90.jpg']]
+        if all(p.exists() for p in example_paths):
+            gr.Examples(examples=[[str(p)] for p in example_paths], inputs=[input_image],
+                        label='演示例图（点击载入）：依次为PA第6天、RC第6天、OS第90天、RC第90天', cache_examples=False)
+            gr.Markdown('例图来源：[Aiello等，EMBO Reports（2025）](https://pmc.ncbi.nlm.nih.gov/articles/PMC12715241/)，Source data Fig. 3，仅供演示流程。第4张存在与边缘目标误连的情况：可展开识别设置，把范围微调设为−35再分析。', elem_classes='oc-help')
         with gr.Accordion('识别设置｜漏掉小目标或轮廓不合适时调整', open=False, elem_classes='oc-technical'):
             min_area = gr.Number(label='最小目标面积（原图 px²）', value=5000, minimum=1, precision=0)
             threshold_offset = gr.Slider(label='识别范围微调：向右更容易纳入浅色区域', minimum=-50, maximum=50, step=1, value=0)
@@ -107,14 +112,6 @@ def build_single(demo):
             gr.Markdown('先分析图片，再填写两个长度并点击“应用比例尺”。例如：标尺上写着100 µm，在**原始图片**中长200 px，则每个像素代表0.5 µm。这个例子仅用于说明，不能直接套用到论文示例。', elem_classes='oc-help')
             gr.Markdown('像素长度需在图像软件中测量标尺两端的距离；不要使用网页缩略图或屏幕截图的长度。只有2x/4x倍率不能确定比例尺。没有可靠标尺时留空。此换算要求横纵方向比例一致，图片未被不等比例拉伸；图上的标尺或文字若被圈中，请按编号排除。', elem_classes='oc-notice')
             gr.Markdown('长度乘以 µm/px；面积乘以它的平方；圆形度不变。更换图片会清除标定和输入值；重新分析或修改长度后需重新应用。', elem_classes='oc-help')
-
-    example_paths = [ROOT / 'examples' / name for name in ['pa_day6.jpg', 'rc_day6.jpg', 'os_day90.jpg', 'rc_day90.jpg']]
-    if all(p.exists() for p in example_paths):
-        with gr.Accordion('论文原图示例与来源', open=False, elem_classes='oc-technical'):
-            gr.Examples(examples=[[str(p)] for p in example_paths], inputs=[input_image],
-                        label='论文原图示例：依次为PA第6天、RC第6天、OS第90天、RC第90天', cache_examples=False)
-            gr.Markdown('示例来源：[Aiello等，EMBO Reports（2025）](https://pmc.ncbi.nlm.nih.gov/articles/PMC12715241/)，Source data Fig. 3。', elem_classes='oc-help')
-            gr.Markdown('第4张示例存在与边缘目标误连的情况：可展开识别设置，把范围微调设为−35再分析，随后检查轮廓。该设置只供此图演示。', elem_classes='oc-notice')
 
     calibration_outputs = [calibration_state, scale_status, physical_table]
     outputs = [output_image, status, results_table, exclusions, analysis_state, *calibration_outputs]

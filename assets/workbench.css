@@ -82,6 +82,11 @@ body { background: var(--body-background-fill); }
 .gradio-container .oc-help p { color: var(--oc-muted); }
 .oc-notice { padding: 13px 16px; border-radius: 6px; background: var(--oc-pale); color: var(--oc-primary-ink); border-left: 3px solid var(--oc-primary); font-size: 13px; line-height: 1.75; }
 .oc-notice-warning { background: var(--oc-warning); color: var(--oc-warning-ink); border-color: var(--oc-accent); }
+/* Form field titles (容器形状、转速等): tinted chip so inputs stand out from help text. */
+.gradio-container [data-testid="block-info"]:not(.sr-only):not(.hide) { background: var(--oc-pale); color: var(--oc-primary-ink); font-weight: 650; padding: 3px 10px; border-left: 3px solid var(--oc-primary); border-radius: var(--oc-r-chip); margin-bottom: 6px; }
+.gradio-container .oc-result-value [data-testid="block-info"]:not(.sr-only) { background: transparent; border-left: 0; padding: 0; font-weight: 400; color: inherit; }
+/* Read-only explanatory text boxes: match page body text instead of the larger input size. */
+.gradio-container .oc-note-text textarea { font-size: 14px !important; line-height: 1.75; color: var(--oc-muted) !important; -webkit-text-fill-color: var(--oc-muted) !important; opacity: 1 !important; }
 .gradio-container .oc-result-value { border: 0 !important; background: transparent !important; box-shadow: none !important; }
 .gradio-container .oc-result-value label { background: transparent !important; }
 .gradio-container .oc-result-value .input-container { background: transparent !important; border: 0 !important; box-shadow: none !important; }

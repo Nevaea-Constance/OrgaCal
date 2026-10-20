@@ -74,13 +74,12 @@ with gr.Blocks(title='OrgaCal · 境算师') as demo:
                             gr.HTML(panel_heading('剪切应力量级','液深梯度尺度模型，单位 mPa'))
                             shear_value=gr.Textbox(label='本次计算范围',interactive=False,elem_classes='oc-result-value')
                             shear_visual_box=gr.HTML(shear_visual(None))
-                            shear_note=gr.Textbox(label='结果含义与适用范围',interactive=False,lines=3,value='模型尚未针对实际装置校准；计算结果不代表组织表面剪切或安全保证。')
+                            shear_note=gr.Textbox(label='结果含义与适用范围',interactive=False,lines=3,elem_classes='oc-note-text',value='模型尚未针对实际装置校准；计算结果不代表组织表面剪切或安全保证。')
                             shear_run=gr.HTML(run_info(None,'shear'))
                             screen_shortcut=gr.Button('继续筛选条件区间')
                     with gr.Accordion('查看本次参数、公式与文献依据',open=False,elem_classes='oc-technical'):
                         shear_table=gr.Dataframe(label='参数与中间量',headers=['参数','数值','单位'],interactive=False,elem_classes='oc-table')
                         shear_assumptions=gr.Markdown('完成计算后，这里会保留全部中间量、公式和适用条件。')
-                    gr.HTML(notice('本页数值是液深尺度估算（τ≈μU/h），尚无本装置的实测流场对照。文献 CFD 显示轨道摇床孔内的壁面剪切随位置和时间变化，所以结果既不是峰值，也不是平均值。旋转腔、机械振动、装配偏心等分项预算尚未接入。','warning'))
                     gr.Markdown('**文献背景**　[Driessen 等（2020）](https://pmc.ncbi.nlm.nih.gov/articles/PMC7345652/)：牛顿流体剪切应力与速度梯度的关系。[脑类器官轨道摇床 CFD（2019）](https://pmc.ncbi.nlm.nih.gov/articles/PMC6404276/)：六孔板内的流场与剪切。[轨道摇床孔板壁面剪切 CFD（Annals of Biomedical Engineering）](https://link.springer.com/article/10.1007/s10439-011-0444-9)：流动随空间和时间变化。这些文献给出剪切的定义和分布特征，没有验证本页的 U/h 尺度。',elem_classes='oc-help')
                     shear_outputs=[shear_value,shear_note,shear_table,shear_assumptions,physics_state]
                     shear_event=shear_button.click(calculate_shear,common,shear_outputs)
@@ -255,7 +254,6 @@ with gr.Blocks(title='OrgaCal · 境算师') as demo:
                             gr.HTML(panel_heading('条件交集与敏感性','剪切上界 × 悬浮下界 × 氧供给下界'))
                             safe_text=gr.Markdown('补充左侧必要参数，再计算条件区间。假设算例用于演示流程，不能作为实验安全建议。')
                             safe_plot=gr.Plot(label='各约束交集与敏感性图',show_label=False)
-                            gr.HTML(notice('本页只判断条件是否满足所填的物理约束。目前没有条件与形态的配对数据，所以不预测形态，也不对条件排序。','warning'))
                     with gr.Accordion('逐项约束、敏感性数据与模型边界',open=False,elem_classes='oc-technical'):
                         safe_table=gr.Dataframe(label='每项约束与依据',interactive=False,elem_classes='oc-table')
                         safe_sensitivity=gr.Dataframe(label='Δρ × Q 敏感性（0.5、1、2 倍）',interactive=False,elem_classes='oc-table')
@@ -311,7 +309,7 @@ with gr.Blocks(title='OrgaCal · 境算师') as demo:
                     export_button.click(export_for_ui,[physics_state,interval_state,conversion_state,batch_state,stats_state,literature_state,screening_state,reliability_state],[report_zip,report_pdf,measurements_csv,report_md,report_status])
                     with gr.Accordion('数据处理、证据边界与项目说明',open=False,elem_classes='oc-technical'):
                         gr.Markdown('下载文件是生成时的快照。图像在运行应用的服务器临时处理；本地运行时该服务器就是本机，公开部署后则是部署服务器。报告含文件名与成像元数据，请使用获授权数据。在线文献检索需要联网。')
-                        gr.Markdown('没有自有培养实验验证；未校准参数和未确认文献保留状态。当前支持轨道摇床尺度计算、形态候选测量、样本 CV、相对 MAD / PCA、配对重复测量的 ICC(2,1) 点估计（无置信区间）、DOI 与 PDF 文字提取（无 OCR）以及物理约束扫描与敏感性分析。旋转腔和机械扰动分项、代理模型优化仍未实现；条件—形态配对训练样本为 0 组，扫描不预测形态是否达标。')
+                        gr.Markdown('当前支持轨道摇床尺度计算、形态候选测量、样本 CV、相对 MAD / PCA、配对重复测量的 ICC(2,1) 点估计（无置信区间）、DOI 与 PDF 文字提取（无 OCR）以及物理约束扫描与敏感性分析。')
                         gr.Markdown('### 主要依据\n[主论文与数据](https://pmc.ncbi.nlm.nih.gov/articles/PMC12715241/) · [轨道摇床 CFD](https://pmc.ncbi.nlm.nih.gov/articles/PMC6404276/) · [剪切定义及几何影响](https://pmc.ncbi.nlm.nih.gov/articles/PMC7345652/) · [球体氧扩散模型](https://pmc.ncbi.nlm.nih.gov/articles/PMC5029285/)')
             with gr.Row(elem_classes='oc-action-row'):
                 gr.Markdown('结果随附计算假设、来源与适用范围。',elem_classes='oc-help')
